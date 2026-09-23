@@ -420,7 +420,7 @@
 <div class="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-marigold">
 <i class="fa-solid fa-heart-pulse text-base"></i>
 </div>
-<span class="text-[11px] font-semibold tracking-wider text-bougainvillea uppercase bg-bougainvillea-soft px-3 py-1 rounded-full" id="wishes-count-badge">3 Wishes</span>
+<span class="text-[11px] font-semibold tracking-wider text-bougainvillea uppercase bg-bougainvillea-soft px-3 py-1 rounded-full" id="wishes-count-badge">0 Wishes</span>
 </div>
 <h3 class="font-serif text-xl font-bold text-charcoal mb-1">Blessings &amp; Wishes</h3>
 <p class="text-xs text-charcoal/70 mb-5">Share your blessings or view warm wishes sent by family &amp; friends for Gowthami &amp; Arjun.</p>
@@ -538,11 +538,7 @@
 <!-- Modal and Event Handlers -->
 <script data-purpose="modal-handlers">
     // Wishes store & render logic
-    const defaultWishes = [
-      { name: "Ramesh & Family", message: "Wishing Gowthami & Arjun a lifetime of joy, laughter, and togetherness! May Lord Ganesha bless your union.", date: "Today" },
-      { name: "Preeti & Vikram", message: "Congratulations to the lovely couple! So excited to celebrate your special day with you both.", date: "Yesterday" },
-      { name: "Divya S.", message: "Sending so much love and prayers for a grand celebration and a wonderful journey ahead!", date: "2 days ago" }
-    ];
+    const defaultWishes = [];
 
     function getWishes() {
       const stored = localStorage.getItem('wedding_wishes');
