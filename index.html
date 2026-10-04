@@ -742,7 +742,9 @@
 
         // Sync globally to cloud so all viewers across all devices see it!
         await postCloudWish(newWish);
-        await fetchCloudWishes();
+        setTimeout(async () => {
+          await fetchCloudWishes();
+        }, 1200);
       }
     }
 
