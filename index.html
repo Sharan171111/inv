@@ -563,8 +563,8 @@
   </script>
 
   <script data-purpose="modal-handlers">
-    // Global Cloud Shared Wishes Store Endpoint (Syncs across all devices & visitors)
-    const CLOUD_WISHES_ENDPOINT = 'https://api.counterapi.dev/v2/gowthami_arjun_wedding_2026/wishes';
+    // Global Cloud Shared Wishes Store Endpoint (Google Apps Script Web App + Firebase Backup)
+    const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyNECoONM835Z4NWLkgKWLsfnJwZ6aQcSb-0xIlFaywrYSkyzL8p1Hz9ogBrqMNAu3O/exec';
     const ALT_CLOUD_STORE = 'https://gowthami-arjun-wedding-default-rtdb.asia-southeast1.firebasedatabase.app/wishes';
 
     let localWishesCache = [];
@@ -582,7 +582,25 @@
     }
 
     async function fetchCloudWishes() {
-      // 1. Try fetching from Cloud Realtime DB
+      // 1. Try fetching from Google Apps Script Web App
+      if (GOOGLE_APPS_SCRIPT_URL) {
+        try {
+          const res = await fetch(GOOGLE_APPS_SCRIPT_URL);
+          if (res.ok) {
+            const data = await res.json();
+            if (Array.isArray(data)) {
+              localWishesCache = data;
+              saveLocalWishes(data);
+              renderWishes(data);
+              return data;
+            }
+          }
+        } catch (err) {
+          console.warn('Google Apps Script fetch fallback:', err);
+        }
+      }
+
+      // 2. Fallback to Firebase Realtime DB
       try {
         const res = await fetch(`${ALT_CLOUD_STORE}.json`);
         if (res.ok) {
@@ -600,13 +618,28 @@
         console.warn('Cloud sync offline fallback:', err);
       }
 
-      // Fallback to local storage cache if network fails
+      // 3. Fallback to local storage cache if network fails
       localWishesCache = getLocalWishes();
       renderWishes(localWishesCache);
       return localWishesCache;
     }
 
     async function postCloudWish(newWish) {
+      // 1. Post to Google Apps Script Web App
+      if (GOOGLE_APPS_SCRIPT_URL) {
+        try {
+          await fetch(GOOGLE_APPS_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain' },
+            body: JSON.stringify(newWish)
+          });
+        } catch (err) {
+          console.warn('Google Apps Script post warning:', err);
+        }
+      }
+
+      // 2. Backup post to Firebase Realtime DB
       try {
         await fetch(`${ALT_CLOUD_STORE}.json`, {
           method: 'POST',
