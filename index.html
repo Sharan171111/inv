@@ -625,8 +625,25 @@
     }
 
     async function postCloudWish(newWish) {
-      // 1. Post to Google Apps Script Web App
+      // 1. Post to Google Apps Script Web App (query param GET bypasses all browser CORS preflights)
       if (GOOGLE_APPS_SCRIPT_URL) {
+        try {
+          const query = `?name=${encodeURIComponent(newWish.name)}&message=${encodeURIComponent(newWish.message)}&date=${encodeURIComponent(newWish.date)}&timestamp=${newWish.timestamp}`;
+          const res = await fetch(GOOGLE_APPS_SCRIPT_URL + query);
+          if (res.ok) {
+            const data = await res.json();
+            if (Array.isArray(data)) {
+              localWishesCache = data;
+              saveLocalWishes(data);
+              renderWishes(data);
+              return data;
+            }
+          }
+        } catch (err) {
+          console.warn('Google Apps Script GET post fallback:', err);
+        }
+
+        // Fallback POST
         try {
           await fetch(GOOGLE_APPS_SCRIPT_URL, {
             method: 'POST',
@@ -635,7 +652,7 @@
             body: JSON.stringify(newWish)
           });
         } catch (err) {
-          console.warn('Google Apps Script post warning:', err);
+          console.warn('Google Apps Script POST warning:', err);
         }
       }
 
