@@ -1,17 +1,20 @@
-<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Wedding of Gowthami &amp; Arjun | October 14–15, 2026</title>
-<!-- Tailwind CSS v3 with Plugins -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Google Fonts: Cormorant Garamond, Italianno & Plus Jakarta Sans -->
-<link href="https://fonts.googleapis.com" rel="preconnect">
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&amp;family=Italianno&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-<!-- FontAwesome Icons for refined micro-details -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-<!-- Tailwind Configuration -->
-<script>
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Wedding of Gowthami &amp; Arjun | October 14–15, 2026</title>
+  <!-- Tailwind CSS v3 with Plugins -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <!-- Google Fonts: Cormorant Garamond, Italianno & Plus Jakarta Sans -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&amp;family=Italianno&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons for refined micro-details -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Tailwind Configuration -->
+  <script>
     tailwind.config = {
       theme: {
         extend: {
@@ -48,7 +51,15 @@
       }
     }
   </script>
-<style data-purpose="typography">
+  <style data-purpose="typography">
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 2rem;
+      overflow-x: hidden;
+    }
+    body {
+      overflow-x: hidden;
+    }
     .font-tracking-widest-xl {
       letter-spacing: 0.28em;
     }
@@ -56,7 +67,7 @@
       text-wrap: balance;
     }
   </style>
-<style data-purpose="animations">
+  <style data-purpose="animations">
     @keyframes gentlePulse {
       0%, 100% { transform: scale(1); opacity: 0.9; }
       50% { transform: scale(1.05); opacity: 1; }
@@ -67,15 +78,9 @@
 
     /* Ambient Breathing Background Mesh Gradient */
     @keyframes ambientGlowShift {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
     .ambient-dynamic-bg {
       background: linear-gradient(135deg, #fdfbf7, #fcf4ec, #faeef3, #f7f0e6, #fdfbf7);
@@ -103,38 +108,17 @@
 
     /* Floating Petals and Shimmer Particles */
     @keyframes floatDownward {
-      0% {
-        transform: translateY(-8vh) translateX(0) rotate(0deg);
-        opacity: 0;
-      }
-      10% {
-        opacity: 0.75;
-      }
-      85% {
-        opacity: 0.65;
-      }
-      100% {
-        transform: translateY(108vh) translateX(45px) rotate(380deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(-8vh) translateX(0) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.75; }
+      85% { opacity: 0.65; }
+      100% { transform: translateY(108vh) translateX(45px) rotate(380deg); opacity: 0; }
     }
     @keyframes floatDownwardAlt {
-      0% {
-        transform: translateY(-8vh) translateX(0) rotate(0deg);
-        opacity: 0;
-      }
-      15% {
-        opacity: 0.8;
-      }
-      80% {
-        opacity: 0.7;
-      }
-      100% {
-        transform: translateY(108vh) translateX(-50px) rotate(-340deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(-8vh) translateX(0) rotate(0deg); opacity: 0; }
+      15% { opacity: 0.8; }
+      80% { opacity: 0.7; }
+      100% { transform: translateY(108vh) translateX(-50px) rotate(-340deg); opacity: 0; }
     }
-
     .petal-item {
       position: absolute;
       top: -5%;
@@ -143,6 +127,18 @@
       will-change: transform, opacity;
       animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
       animation-iteration-count: infinite;
+    }
+
+    /* Smooth Scroll Section Reveal */
+    .reveal-section {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-section.revealed {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* Reduced Motion Accessibility */
@@ -154,355 +150,385 @@
       .animate-gentle-pulse {
         animation: none !important;
       }
+      .reveal-section {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
     }
   </style>
 </head>
 <body class="ambient-dynamic-bg text-charcoal font-sans antialiased selection:bg-bougainvillea selection:text-white relative">
-<!-- BEGIN: AmbientMotionLayer -->
-<div aria-hidden="true" class="fixed inset-0 pointer-events-none overflow-hidden z-0">
-<!-- Glowing Floating Bokeh Orbs -->
-<div class="absolute top-1/4 left-8 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-gradient-to-tr from-bougainvillea-soft/60 to-champagne-light/50 blur-3xl animate-drift-orb-1"></div>
-<div class="absolute bottom-1/4 right-8 w-80 sm:w-[30rem] h-80 sm:h-[30rem] rounded-full bg-gradient-to-br from-marigold/15 via-rose-100/30 to-champagne/20 blur-3xl animate-drift-orb-2"></div>
-<div class="absolute top-2/3 left-1/3 w-64 h-64 rounded-full bg-amber-100/30 blur-2xl animate-drift-orb-1" style="animation-duration: 26s; animation-delay: -5s;"></div>
-<!-- Soft Floating Rose & Marigold Petals (SVG-based, lightweight, non-intrusive) -->
-<!-- Petal 1: Soft Bougainvillea Petal -->
-<div class="petal-item" style="left: 6%; animation: floatDownward 21s linear infinite; animation-delay: 0s;">
-<svg class="w-5 h-5 text-bougainvillea/40 filter drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
-<path d="M12 2C9.5 5 6 10 7.5 15c1.2 4 4.5 7 4.5 7s3.3-3 4.5-7C18 10 14.5 5 12 2z"></path>
-</svg>
-</div>
-<!-- Petal 2: Golden Marigold Shimmer -->
-<div class="petal-item" style="left: 18%; animation: floatDownwardAlt 26s linear infinite; animation-delay: 5s;">
-<svg class="w-4 h-4 text-marigold/50 filter drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
-<path d="M12 3c-1.5 3-4 6-3 9.5 1 3 3 5.5 3 5.5s2-2.5 3-5.5C16 9 13.5 6 12 3z"></path>
-</svg>
-</div>
-<!-- Petal 3: Soft Gold Shimmer Fleck -->
-<div class="petal-item" style="left: 28%; animation: floatDownward 24s linear infinite; animation-delay: 11s;">
-<div class="w-2.5 h-2.5 rounded-full bg-champagne/60 shadow-[0_0_8px_rgba(203,178,133,0.8)]"></div>
-</div>
-<!-- Petal 4: Tender Rose Petal -->
-<div class="petal-item" style="left: 45%; animation: floatDownwardAlt 23s linear infinite; animation-delay: 2.5s;">
-<svg class="w-6 h-6 text-rose-400/35 filter drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
-<path d="M12 2.5C10 5.5 6.8 9.8 8 14.5c1 3.8 4 6.5 4 6.5s3-2.7 4-6.5C17.2 9.8 14 5.5 12 2.5z"></path>
-</svg>
-</div>
-<!-- Petal 5: Golden Bokeh Sparkle -->
-<div class="petal-item" style="left: 62%; animation: floatDownward 28s linear infinite; animation-delay: 8s;">
-<div class="w-2 h-2 rounded-full bg-amber-200/75 shadow-[0_0_10px_rgba(244,158,44,0.7)]"></div>
-</div>
-<!-- Petal 6: Warm Bougainvillea Petal -->
-<div class="petal-item" style="left: 76%; animation: floatDownwardAlt 20s linear infinite; animation-delay: 14s;">
-<svg class="w-5 h-5 text-bougainvillea/35 filter drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
-<path d="M12 2C9.5 5 6 10 7.5 15c1.2 4 4.5 7 4.5 7s3.3-3 4.5-7C18 10 14.5 5 12 2z"></path>
-</svg>
-</div>
-<!-- Petal 7: Marigold Blossom Flake -->
-<div class="petal-item" style="left: 88%; animation: floatDownward 25s linear infinite; animation-delay: 7s;">
-<svg class="w-4 h-4 text-marigold/45 filter drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
-<path d="M12 3c-1.5 3-4 6-3 9.5 1 3 3 5.5 3 5.5s2-2.5 3-5.5C16 9 13.5 6 12 3z"></path>
-</svg>
-</div>
-<!-- Petal 8: Gentle Golden Fleck -->
-<div class="petal-item" style="left: 94%; animation: floatDownwardAlt 22s linear infinite; animation-delay: 3s;">
-<div class="w-2.5 h-2.5 rounded-full bg-champagne-dark/40 shadow-[0_0_6px_rgba(203,178,133,0.6)]"></div>
-</div>
-</div>
-<!-- END: AmbientMotionLayer -->
 
-<!-- BEGIN: InvitationMainContainer -->
-<main class="min-h-screen py-10 px-4 sm:px-6 lg:px-8 flex items-center justify-center relative overflow-hidden z-10">
-<!-- Delicate Decorative Background Floral Watermarks -->
-<div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-bougainvillea-soft/50 blur-3xl pointer-events-none"></div>
-<div class="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-marigold/10 blur-3xl pointer-events-none"></div>
-<!-- The Luxury Card Frame -->
-<div class="w-full max-w-6xl bg-white/95 backdrop-blur-sm border border-champagne/40 rounded-3xl shadow-invitation relative overflow-hidden transition-all duration-500">
-<!-- Gold Inner Border Accent -->
-<div class="absolute inset-2 sm:inset-3 border border-champagne/30 rounded-[1.35rem] pointer-events-none z-10"></div>
-<!-- Top Floral Botanical Motif Garland -->
-<div class="pt-10 pb-4 text-center">
-<div class="inline-flex items-center justify-center space-x-3 text-champagne-dark">
-<span class="h-px w-12 sm:w-20 bg-gradient-to-r from-transparent to-champagne"></span>
-<i class="fa-solid fa-spa text-base text-bougainvillea animate-gentle-pulse"></i>
-<span class="text-xs uppercase tracking-widest font-serif text-bougainvillea-deep">Shree Ganeshayah Namaha</span>
-<i class="fa-solid fa-spa text-base text-bougainvillea animate-gentle-pulse"></i>
-<span class="h-px w-12 sm:w-20 bg-gradient-to-l from-transparent to-champagne"></span>
-</div>
-</div>
-<div class="px-6 sm:px-12 lg:px-16 pb-14 pt-2">
-<!-- BEGIN: HeroHeader -->
-<header class="text-center max-w-3xl mx-auto mb-12" data-purpose="hero-header">
-<p class="font-serif text-sm sm:text-base uppercase tracking-widest text-charcoal/70 mb-3 font-semibold">
+  <!-- Floating Responsive Navigation Dock for Smooth Scrolling -->
+  <nav class="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-40 bg-white/90 backdrop-blur-md border border-champagne/40 rounded-full px-3.5 sm:px-5 py-2 shadow-floating flex items-center space-x-2.5 sm:space-x-5 text-xs font-semibold text-charcoal/80 transition-all duration-300 hover:shadow-xl">
+    <a href="#hero" class="hover:text-bougainvillea transition-colors flex items-center space-x-1.5 py-1 px-1.5 sm:px-2 rounded-full hover:bg-bougainvillea-soft/60">
+      <i class="fa-solid fa-heart text-[11px] text-bougainvillea"></i>
+      <span class="hidden sm:inline font-serif uppercase tracking-wider">Couple</span>
+    </a>
+    <span class="w-1 h-1 rounded-full bg-champagne/60"></span>
+    <a href="#events" class="hover:text-bougainvillea transition-colors flex items-center space-x-1.5 py-1 px-1.5 sm:px-2 rounded-full hover:bg-bougainvillea-soft/60">
+      <i class="fa-regular fa-calendar-days text-[11px] text-marigold"></i>
+      <span class="font-serif uppercase tracking-wider">Events</span>
+    </a>
+    <span class="w-1 h-1 rounded-full bg-champagne/60"></span>
+    <a href="#gallery" class="hover:text-bougainvillea transition-colors flex items-center space-x-1.5 py-1 px-1.5 sm:px-2 rounded-full hover:bg-bougainvillea-soft/60">
+      <i class="fa-regular fa-image text-[11px] text-champagne-dark"></i>
+      <span class="font-serif uppercase tracking-wider">Gallery</span>
+    </a>
+    <span class="w-1 h-1 rounded-full bg-champagne/60"></span>
+    <a href="#countdown" class="hover:text-bougainvillea transition-colors flex items-center space-x-1.5 py-1 px-1.5 sm:px-2 rounded-full hover:bg-bougainvillea-soft/60">
+      <i class="fa-solid fa-clock text-[11px] text-bougainvillea"></i>
+      <span class="hidden sm:inline font-serif uppercase tracking-wider">Timer</span>
+    </a>
+    <span class="w-1 h-1 rounded-full bg-champagne/60"></span>
+    <a href="#blessings" class="hover:text-bougainvillea transition-colors flex items-center space-x-1.5 py-1 px-1.5 sm:px-2 rounded-full hover:bg-bougainvillea-soft/60">
+      <i class="fa-solid fa-hands-praying text-[11px] text-marigold"></i>
+      <span class="font-serif uppercase tracking-wider">Wishes</span>
+    </a>
+  </nav>
+
+  <!-- BEGIN: AmbientMotionLayer -->
+  <div aria-hidden="true" class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute top-1/4 left-8 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-gradient-to-tr from-bougainvillea-soft/60 to-champagne-light/50 blur-3xl animate-drift-orb-1"></div>
+    <div class="absolute bottom-1/4 right-8 w-80 sm:w-[30rem] h-80 sm:h-[30rem] rounded-full bg-gradient-to-br from-marigold/15 via-rose-100/30 to-champagne/20 blur-3xl animate-drift-orb-2"></div>
+    <div class="absolute top-2/3 left-1/3 w-64 h-64 rounded-full bg-amber-100/30 blur-2xl animate-drift-orb-1" style="animation-duration: 26s; animation-delay: -5s;"></div>
+
+    <div class="petal-item" style="left: 6%; animation: floatDownward 21s linear infinite; animation-delay: 0s;">
+      <svg class="w-5 h-5 text-bougainvillea/40 filter drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C9.5 5 6 10 7.5 15c1.2 4 4.5 7 4.5 7s3.3-3 4.5-7C18 10 14.5 5 12 2z"></path></svg>
+    </div>
+    <div class="petal-item" style="left: 18%; animation: floatDownwardAlt 26s linear infinite; animation-delay: 5s;">
+      <svg class="w-4 h-4 text-marigold/50 filter drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3c-1.5 3-4 6-3 9.5 1 3 3 5.5 3 5.5s2-2.5 3-5.5C16 9 13.5 6 12 3z"></path></svg>
+    </div>
+    <div class="petal-item" style="left: 28%; animation: floatDownward 24s linear infinite; animation-delay: 11s;">
+      <div class="w-2.5 h-2.5 rounded-full bg-champagne/60 shadow-[0_0_8px_rgba(203,178,133,0.8)]"></div>
+    </div>
+    <div class="petal-item" style="left: 45%; animation: floatDownwardAlt 23s linear infinite; animation-delay: 2.5s;">
+      <svg class="w-6 h-6 text-rose-400/35 filter drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.5C10 5.5 6.8 9.8 8 14.5c1 3.8 4 6.5 4 6.5s3-2.7 4-6.5C17.2 9.8 14 5.5 12 2.5z"></path></svg>
+    </div>
+    <div class="petal-item" style="left: 62%; animation: floatDownward 28s linear infinite; animation-delay: 8s;">
+      <div class="w-2 h-2 rounded-full bg-amber-200/75 shadow-[0_0_10px_rgba(244,158,44,0.7)]"></div>
+    </div>
+    <div class="petal-item" style="left: 76%; animation: floatDownwardAlt 20s linear infinite; animation-delay: 14s;">
+      <svg class="w-5 h-5 text-bougainvillea/35 filter drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C9.5 5 6 10 7.5 15c1.2 4 4.5 7 4.5 7s3.3-3 4.5-7C18 10 14.5 5 12 2z"></path></svg>
+    </div>
+    <div class="petal-item" style="left: 88%; animation: floatDownward 25s linear infinite; animation-delay: 7s;">
+      <svg class="w-4 h-4 text-marigold/45 filter drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3c-1.5 3-4 6-3 9.5 1 3 3 5.5 3 5.5s2-2.5 3-5.5C16 9 13.5 6 12 3z"></path></svg>
+    </div>
+    <div class="petal-item" style="left: 94%; animation: floatDownwardAlt 22s linear infinite; animation-delay: 3s;">
+      <div class="w-2.5 h-2.5 rounded-full bg-champagne-dark/40 shadow-[0_0_6px_rgba(203,178,133,0.6)]"></div>
+    </div>
+  </div>
+  <!-- END: AmbientMotionLayer -->
+
+  <!-- BEGIN: InvitationMainContainer -->
+  <main class="min-h-screen py-6 sm:py-10 px-3 sm:px-6 lg:px-8 flex items-center justify-center relative overflow-hidden z-10">
+    <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-bougainvillea-soft/50 blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-marigold/10 blur-3xl pointer-events-none"></div>
+    
+    <!-- The Luxury Card Frame -->
+    <div class="w-full max-w-6xl bg-white/95 backdrop-blur-sm border border-champagne/40 rounded-3xl shadow-invitation relative overflow-hidden transition-all duration-500">
+      <div class="absolute inset-2 sm:inset-3 border border-champagne/30 rounded-[1.35rem] pointer-events-none z-10"></div>
+      
+      <!-- Top Floral Botanical Motif Garland -->
+      <div class="pt-8 sm:pt-10 pb-4 text-center">
+        <div class="inline-flex items-center justify-center space-x-2 sm:space-x-3 text-champagne-dark">
+          <span class="h-px w-8 sm:w-20 bg-gradient-to-r from-transparent to-champagne"></span>
+          <i class="fa-solid fa-spa text-sm sm:text-base text-bougainvillea animate-gentle-pulse"></i>
+          <span class="text-[11px] sm:text-xs uppercase tracking-widest font-serif text-bougainvillea-deep">Shree Ganeshayah Namaha</span>
+          <i class="fa-solid fa-spa text-sm sm:text-base text-bougainvillea animate-gentle-pulse"></i>
+          <span class="h-px w-8 sm:w-20 bg-gradient-to-l from-transparent to-champagne"></span>
+        </div>
+      </div>
+      
+      <div class="px-4 sm:px-12 lg:px-16 pb-16 pt-2">
+        <!-- BEGIN: HeroHeader -->
+        <header id="hero" class="text-center max-w-3xl mx-auto mb-10 sm:mb-14 reveal-section scroll-mt-10" data-purpose="hero-header">
+          <p class="font-serif text-xs sm:text-base uppercase tracking-widest text-charcoal/70 mb-3 font-semibold">
             Kindly Join Us to Celebrate the Wedding of
           </p>
-<h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-light tracking-wide text-charcoal leading-none mb-2">
+          <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-light tracking-wide text-charcoal leading-none mb-2">
             GOWTHAMI
             <span class="block font-script text-4xl sm:text-6xl text-bougainvillea my-1 lowercase tracking-normal font-normal">and</span>
             ARJUN
           </h1>
-<p class="font-script text-2xl sm:text-3xl text-bougainvillea-deep mt-3">
+          <p class="font-script text-2xl sm:text-3xl text-bougainvillea-deep mt-3">
             Two Hearts, One Beautiful Journey...
           </p>
-<div class="flex items-center justify-center mt-3">
-<span class="inline-block w-8 h-px bg-champagne"></span>
-<i class="fa-solid fa-heart text-[10px] mx-2 text-vermilion"></i>
-<span class="inline-block w-8 h-px bg-champagne"></span>
-</div>
-</header>
-<!-- END: HeroHeader -->
-<!-- BEGIN: SplitContentGrid -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-<!-- Couple Portrait Column -->
-<div class="lg:col-span-5 flex flex-col items-center">
-<!-- Modern Arch Framed Couple Photograph -->
-<div class="relative group">
-<!-- Outer decorative glow arch ring -->
-<div class="absolute -inset-2 bg-gradient-to-tr from-marigold/30 via-bougainvillea/20 to-champagne/40 rounded-t-[12rem] rounded-b-3xl blur-md group-hover:blur-lg transition-all duration-500"></div>
-<div class="relative w-64 sm:w-72 lg:w-80 h-[26rem] sm:h-[28rem] rounded-t-[11.5rem] rounded-b-2xl overflow-hidden border-2 border-champagne/60 shadow-xl bg-ivory-100">
-<img alt="Gowthami &amp; Arjun" class="w-full h-full object-cover object-center transform transition duration-700 group-hover:scale-105" decoding="async" loading="eager" style="image-rendering: -webkit-optimize-contrast;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3n_z_4XQ_GukQH63fBFVU-G0rCUICOoULh_0blYqexCXLc4C-3rM5PqhHuPfqnJr0ObGhEkr1PJZvP0Qe2GZ1YLFBUhDkDE6NFeRkX_gK8kV0Q3xy1nYyRuAnNoQJ5yzI4bFRAzdOCnjIIiIA2ttihbDjtUftJT5uvUCRmOViOLW1GAKxWtM7DpsGNKtL_COg5yBIfwERLlw0CP-pm2G-N6P0-vrnAVsDtIpdPXDTrkhxVuFoVA8SeQmDUD5kLcPSAw">
-<!-- Soft Warm Highlight Overlay -->
-<div class="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent pointer-events-none"></div>
-<div class="absolute bottom-4 inset-x-0 text-center text-white/90 font-serif text-sm tracking-widest uppercase">
+          <div class="flex items-center justify-center mt-3">
+            <span class="inline-block w-8 h-px bg-champagne"></span>
+            <i class="fa-solid fa-heart text-[10px] mx-2 text-vermilion"></i>
+            <span class="inline-block w-8 h-px bg-champagne"></span>
+          </div>
+        </header>
+        <!-- END: HeroHeader -->
+
+        <!-- BEGIN: SplitContentGrid -->
+        <div id="events" class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center reveal-section scroll-mt-8">
+          <!-- Couple Portrait Column -->
+          <div class="lg:col-span-5 flex flex-col items-center">
+            <div class="relative group">
+              <div class="absolute -inset-2 bg-gradient-to-tr from-marigold/30 via-bougainvillea/20 to-champagne/40 rounded-t-[12rem] rounded-b-3xl blur-md group-hover:blur-lg transition-all duration-500"></div>
+              <div class="relative w-64 sm:w-72 lg:w-80 h-[24rem] sm:h-[28rem] rounded-t-[11.5rem] rounded-b-2xl overflow-hidden border-2 border-champagne/60 shadow-xl bg-ivory-100">
+                <img alt="Gowthami &amp; Arjun" class="w-full h-full object-cover object-center transform transition duration-700 group-hover:scale-105" decoding="async" loading="eager" style="image-rendering: -webkit-optimize-contrast;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3n_z_4XQ_GukQH63fBFVU-G0rCUICOoULh_0blYqexCXLc4C-3rM5PqhHuPfqnJr0ObGhEkr1PJZvP0Qe2GZ1YLFBUhDkDE6NFeRkX_gK8kV0Q3xy1nYyRuAnNoQJ5yzI4bFRAzdOCnjIIiIA2ttihbDjtUftJT5uvUCRmOViOLW1GAKxWtM7DpsGNKtL_COg5yBIfwERLlw0CP-pm2G-N6P0-vrnAVsDtIpdPXDTrkhxVuFoVA8SeQmDUD5kLcPSAw">
+                <div class="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent pointer-events-none"></div>
+                <div class="absolute bottom-4 inset-x-0 text-center text-white/90 font-serif text-sm tracking-widest uppercase">
                   Gowthami &amp; Arjun
                 </div>
-</div>
-</div>
-<!-- Auspicious Date Pill -->
-<div class="mt-6 inline-flex items-center px-5 py-2 rounded-full bg-bougainvillea-soft border border-bougainvillea/20 text-bougainvillea-deep text-xs font-semibold uppercase tracking-widest">
-<i class="fa-regular fa-calendar-days mr-2 text-vermilion"></i> October 14 &amp; 15, 2026
+              </div>
             </div>
-</div>
-<!-- Event Itinerary Column -->
-<div class="lg:col-span-7 space-y-8">
-<!-- BEGIN: EventCardMuhurtham -->
-<article class="relative p-6 sm:p-7 rounded-2xl bg-ivory-50/70 border border-champagne/40 hover:border-champagne transition-all duration-300 hover:shadow-md" data-purpose="event-card-muhurtham">
-<div class="flex items-start justify-between">
-<div>
-<span class="inline-block px-3 py-1 rounded bg-amber-100 text-marigold font-bold text-[10px] tracking-widest uppercase mb-2">
-                    Sacred Union
-                  </span>
-<h2 class="font-serif text-2xl sm:text-3xl text-charcoal font-semibold tracking-wide">
-                    MUHURTHAM
-                  </h2>
-</div>
-<div class="text-right">
-<span class="font-serif text-lg sm:text-xl text-bougainvillea font-bold">9:00 AM</span>
-<p class="text-xs text-charcoal/60 uppercase tracking-wider">Morning Auspicious</p>
-</div>
-</div>
-<!-- Date Detail -->
-<div class="mt-4 flex items-center space-x-2 text-charcoal/80 text-sm font-medium">
-<i class="fa-solid fa-clock text-bougainvillea/80 text-sm"></i>
-<span class="">Wednesday, October 14th, 2026</span>
-</div>
-<!-- Venue Details -->
-<div class="mt-3 pt-3 border-t border-champagne/30 text-charcoal/90">
-<p class="font-serif font-bold text-base text-charcoal">Lakshmi Srinivasa Convention Hall</p>
-<p class="text-xs sm:text-sm text-charcoal/70 leading-relaxed">
-                  Tudur, Thirthahalli Main Road, Karnataka
-                </p>
-</div>
-<!-- Action Links -->
-<div class="mt-5 flex flex-wrap items-center gap-3">
-<a class="inline-flex items-center px-4 py-2 rounded-lg bg-charcoal text-white hover:bg-bougainvillea text-xs font-semibold tracking-wider transition-colors duration-200" href="https://maps.google.com/?q=Lakshmi+Srinivasa+Convention+Hall+Tudur" rel="noopener noreferrer" target="_blank">
-<i class="fa-solid fa-location-dot mr-2 text-marigold"></i> Get Directions
+            <div class="mt-6 inline-flex items-center px-5 py-2 rounded-full bg-bougainvillea-soft border border-bougainvillea/20 text-bougainvillea-deep text-xs font-semibold uppercase tracking-widest">
+              <i class="fa-regular fa-calendar-days mr-2 text-vermilion"></i> October 14 &amp; 15, 2026
+            </div>
+          </div>
+
+          <!-- Event Itinerary Column -->
+          <div class="lg:col-span-7 space-y-6 sm:space-y-8">
+            <!-- BEGIN: EventCardMuhurtham -->
+            <article class="relative p-5 sm:p-7 rounded-2xl bg-ivory-50/70 border border-champagne/40 hover:border-champagne transition-all duration-300 hover:shadow-md" data-purpose="event-card-muhurtham">
+              <div class="flex items-start justify-between">
+                <div>
+                  <span class="inline-block px-3 py-1 rounded bg-amber-100 text-marigold font-bold text-[10px] tracking-widest uppercase mb-2">Sacred Union</span>
+                  <h2 class="font-serif text-2xl sm:text-3xl text-charcoal font-semibold tracking-wide">MUHURTHAM</h2>
+                </div>
+                <div class="text-right">
+                  <span class="font-serif text-lg sm:text-xl text-bougainvillea font-bold">9:00 AM</span>
+                  <p class="text-[11px] sm:text-xs text-charcoal/60 uppercase tracking-wider">Morning Auspicious</p>
+                </div>
+              </div>
+              <div class="mt-4 flex items-center space-x-2 text-charcoal/80 text-xs sm:text-sm font-medium">
+                <i class="fa-solid fa-clock text-bougainvillea/80 text-sm"></i>
+                <span>Wednesday, October 14th, 2026</span>
+              </div>
+              <div class="mt-3 pt-3 border-t border-champagne/30 text-charcoal/90">
+                <p class="font-serif font-bold text-base text-charcoal">Lakshmi Srinivasa Convention Hall</p>
+                <p class="text-xs sm:text-sm text-charcoal/70 leading-relaxed">Tudur, Thirthahalli Main Road, Karnataka</p>
+              </div>
+              <div class="mt-5 flex flex-wrap items-center gap-3">
+                <a class="inline-flex items-center min-h-[40px] px-4 py-2 rounded-lg bg-charcoal text-white hover:bg-bougainvillea text-xs font-semibold tracking-wider transition-colors duration-200" href="https://maps.google.com/?q=Lakshmi+Srinivasa+Convention+Hall+Tudur" rel="noopener noreferrer" target="_blank">
+                  <i class="fa-solid fa-location-dot mr-2 text-marigold"></i> Get Directions
                 </a>
-<button class="inline-flex items-center px-4 py-2 rounded-lg border border-charcoal/20 bg-white hover:bg-ivory-100 text-charcoal text-xs font-semibold tracking-wider transition-colors duration-200" onclick="downloadIcs('Muhurtham: Gowthami &amp; Arjun', 'Lakshmi Srinivasa Convention Hall, Tudur', '2026-10-14T09:00:00')">
-<i class="fa-regular fa-calendar-plus mr-2 text-bougainvillea"></i> Add to Calendar
+                <button class="inline-flex items-center min-h-[40px] px-4 py-2 rounded-lg border border-charcoal/20 bg-white hover:bg-ivory-100 text-charcoal text-xs font-semibold tracking-wider transition-colors duration-200" onclick="downloadIcs('Muhurtham: Gowthami &amp; Arjun', 'Lakshmi Srinivasa Convention Hall, Tudur', '2026-10-14T09:00:00')">
+                  <i class="fa-regular fa-calendar-plus mr-2 text-bougainvillea"></i> Add to Calendar
                 </button>
-</div>
-</article>
-<!-- END: EventCardMuhurtham -->
-<!-- BEGIN: EventCardReception -->
-<article class="relative p-6 sm:p-7 rounded-2xl bg-ivory-50/70 border border-champagne/40 hover:border-champagne transition-all duration-300 hover:shadow-md" data-purpose="event-card-reception">
-<div class="flex items-start justify-between">
-<div>
-<span class="inline-block px-3 py-1 rounded bg-rose-100 text-bougainvillea font-bold text-[10px] tracking-widest uppercase mb-2">
-                    Grand Evening
-                  </span>
-<h2 class="font-serif text-2xl sm:text-3xl text-charcoal font-semibold tracking-wide">
-                    RECEPTION
-                  </h2>
-</div>
-<div class="text-right">
-<span class="font-serif text-lg sm:text-xl text-bougainvillea font-bold">6:30 PM</span>
-<p class="text-xs text-charcoal/60 uppercase tracking-wider">Evening Gala</p>
-</div>
-</div>
-<!-- Date Detail -->
-<div class="mt-4 flex items-center space-x-2 text-charcoal/80 text-sm font-medium">
-<i class="fa-solid fa-moon text-bougainvillea/80 text-sm"></i>
-<span class="">Thursday, October 15th, 2026</span>
-</div>
-<!-- Venue Details -->
-<div class="mt-3 pt-3 border-t border-champagne/30 text-charcoal/90">
-<p class="font-serif font-bold text-base text-charcoal">Bantara Bhavana</p>
-<p class="text-xs sm:text-sm text-charcoal/70 leading-relaxed">
-                  Gopal Gowda Extension, Shivamogga, Karnataka
-                </p>
-</div>
-<!-- Action Links -->
-<div class="mt-5 flex flex-wrap items-center gap-3">
-<a class="inline-flex items-center px-4 py-2 rounded-lg bg-charcoal text-white hover:bg-bougainvillea text-xs font-semibold tracking-wider transition-colors duration-200" href="https://maps.google.com/?q=Bantara+Bhavana+Gopal+Gowda+Extension+Shivamogga" rel="noopener noreferrer" target="_blank">
-<i class="fa-solid fa-location-dot mr-2 text-marigold"></i> Get Directions
+              </div>
+            </article>
+
+            <!-- BEGIN: EventCardReception -->
+            <article class="relative p-5 sm:p-7 rounded-2xl bg-ivory-50/70 border border-champagne/40 hover:border-champagne transition-all duration-300 hover:shadow-md" data-purpose="event-card-reception">
+              <div class="flex items-start justify-between">
+                <div>
+                  <span class="inline-block px-3 py-1 rounded bg-rose-100 text-bougainvillea font-bold text-[10px] tracking-widest uppercase mb-2">Grand Evening</span>
+                  <h2 class="font-serif text-2xl sm:text-3xl text-charcoal font-semibold tracking-wide">RECEPTION</h2>
+                </div>
+                <div class="text-right">
+                  <span class="font-serif text-lg sm:text-xl text-bougainvillea font-bold">6:30 PM</span>
+                  <p class="text-[11px] sm:text-xs text-charcoal/60 uppercase tracking-wider">Evening Gala</p>
+                </div>
+              </div>
+              <div class="mt-4 flex items-center space-x-2 text-charcoal/80 text-xs sm:text-sm font-medium">
+                <i class="fa-solid fa-moon text-bougainvillea/80 text-sm"></i>
+                <span>Thursday, October 15th, 2026</span>
+              </div>
+              <div class="mt-3 pt-3 border-t border-champagne/30 text-charcoal/90">
+                <p class="font-serif font-bold text-base text-charcoal">Bantara Bhavana</p>
+                <p class="text-xs sm:text-sm text-charcoal/70 leading-relaxed">Gopal Gowda Extension, Shivamogga, Karnataka</p>
+              </div>
+              <div class="mt-5 flex flex-wrap items-center gap-3">
+                <a class="inline-flex items-center min-h-[40px] px-4 py-2 rounded-lg bg-charcoal text-white hover:bg-bougainvillea text-xs font-semibold tracking-wider transition-colors duration-200" href="https://maps.google.com/?q=Bantara+Bhavana+Gopal+Gowda+Extension+Shivamogga" rel="noopener noreferrer" target="_blank">
+                  <i class="fa-solid fa-location-dot mr-2 text-marigold"></i> Get Directions
                 </a>
-<button class="inline-flex items-center px-4 py-2 rounded-lg border border-charcoal/20 bg-white hover:bg-ivory-100 text-charcoal text-xs font-semibold tracking-wider transition-colors duration-200" onclick="downloadIcs('Reception: Gowthami &amp; Arjun', 'Bantara Bhavana, Gopal Gowda Extension, Shivamogga', '2026-10-15T18:30:00')">
-<i class="fa-regular fa-calendar-plus mr-2 text-bougainvillea"></i> Add to Calendar
+                <button class="inline-flex items-center min-h-[40px] px-4 py-2 rounded-lg border border-charcoal/20 bg-white hover:bg-ivory-100 text-charcoal text-xs font-semibold tracking-wider transition-colors duration-200" onclick="downloadIcs('Reception: Gowthami &amp; Arjun', 'Bantara Bhavana, Gopal Gowda Extension, Shivamogga', '2026-10-15T18:30:00')">
+                  <i class="fa-regular fa-calendar-plus mr-2 text-bougainvillea"></i> Add to Calendar
                 </button>
-</div>
-</article>
-<!-- END: EventCardReception -->
-</div>
-</div>
-<!-- END: SplitContentGrid -->
-<!-- BEGIN: PreWeddingMomentsGallery -->
-<section class="mt-14 pt-10 border-t border-champagne/30" data-purpose="pre-wedding-gallery">
-<div class="text-center max-w-2xl mx-auto mb-8">
-<p class="font-serif text-xs uppercase tracking-widest text-bougainvillea-deep font-semibold mb-1">Captured Moments</p>
-<h3 class="font-serif text-3xl sm:text-4xl font-normal text-charcoal tracking-wide mb-2">Glimpses of Us</h3>
-<p class="font-script text-2xl text-bougainvillea">Cherished memories on the way to our forever</p>
-<div class="flex items-center justify-center mt-3">
-<span class="inline-block w-6 h-px bg-champagne"></span>
-<i class="fa-solid fa-heart text-[9px] mx-2 text-bougainvillea/60"></i>
-<span class="inline-block w-6 h-px bg-champagne"></span>
-</div>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-<!-- Photo Card 1: Featured Portrait with Image 1 -->
-<div class="group relative rounded-2xl overflow-hidden border border-champagne/40 bg-ivory-100 shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.02] flex flex-col"><div class="relative h-64 w-full overflow-hidden bg-ivory-200"><img alt="Sunset Serenade" class="w-full h-full object-cover object-center transform transition duration-500 group-hover:scale-105" decoding="async" loading="eager" style="image-rendering: -webkit-optimize-contrast; image-rendering: high-quality;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAemU99QLiL1bJimWSTwuJr9yTw2RpvqMGh7LAO00VeURov9g9zMNfONCnm2Av-VliRwhvIMkF3PRFvdj1NpdehZNmLYWdSDzO0x7ZGWtxyUS0mjTd_lv9VNXjXEwvGiKEfjebRwq50YmPv4yiC4fUAFpZ-Jr8gK9J6yQ6cpoTTsuUi0Aeme_KqIQYaX9eoo7YTj_f22OFwxFmFMr1C3NfXOSFFmh5tnkUpJ31rgtk8S8jKGr0NAFrHEcbssR4eX7_Rlg"><div class="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent transition-opacity"></div></div><div class="p-4 bg-white/90 border-t border-champagne/30"><h4 class="font-serif text-base font-bold text-charcoal">Sunset Serenade</h4><p class="text-xs text-charcoal/60 font-serif italic mt-0.5">Golden hour by the shore</p></div></div>
-<!-- Photo Card 2: Aesthetic Placeholder -->
-<div class="group relative rounded-2xl overflow-hidden border border-champagne/40 bg-ivory-100 shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.02] flex flex-col"><div class="relative h-64 w-full overflow-hidden bg-ivory-200"><img alt="The First Stroll" class="w-full h-full object-cover object-center transform transition duration-500 group-hover:scale-105" decoding="async" loading="eager" style="image-rendering: -webkit-optimize-contrast; image-rendering: high-quality;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEjyVHXMKydiwTqWkIWxkNMsZivQh4KxVbsyWdKKK6XasJaBsIB-r7BAvlHpWDgs1Xe_SaGLCpgVPve6Hhxkj-Vv_HPoNhORW4YQwvuMH1VtuM7M7ibKNjYjQVSFjpHy2We1m9J3lbd_qGbATdDPzIUbOI4Ot5JFLxUiiuINdnpv6TnbnL3zEwrNJim6cC-HRp8jk_Ryq9gdUFuEYequOMdhozW0GjSN9e-N43xZbSLNbPaXe9C-mSNh8s9_NbuqtcsQ"><div class="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent transition-opacity"></div></div><div class="p-4 bg-white/90 border-t border-champagne/30"><h4 class="font-serif text-base font-bold text-charcoal">The First Stroll</h4><p class="text-xs text-charcoal/60 font-serif italic mt-0.5">Laughs &amp; Sweet Promises</p></div></div>
-<!-- Photo Card 3: Aesthetic Placeholder -->
-<div class="group relative rounded-2xl overflow-hidden border border-champagne/40 bg-ivory-100 shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.02] flex flex-col"><div class="relative h-64 w-full overflow-hidden bg-ivory-200"><img alt="Coffee &amp; Conversations" class="w-full h-full object-cover object-center transform transition duration-500 group-hover:scale-105" decoding="async" loading="eager" style="image-rendering: -webkit-optimize-contrast; image-rendering: high-quality;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM1H-wiyeG-HQTBoaLRAIMd4Rl6h3u6yVGY8lyGeqlTbGQWeRBe1YrPBCkmSntPlF8cKeEXrlUudUIqcVmQkOgFD_okzYqIbJX1j8StTqH8pCVLi_yhXG3CgbSj2vR8vX8_Z4Tw5AWCFxF1Sy6I_y5W7BvUIEI3HBPS8ZTRQLeivZ1vq1HIBE6QpHsamR1vhvWq9tYW4AsBv0EtGa6caBjgaecbyO3s3WQMThuGIT3ZIVXbs0Dauwd90DF1FADWZyv0A"><div class="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent transition-opacity"></div></div><div class="p-4 bg-white/90 border-t border-champagne/30"><h4 class="font-serif text-base font-bold text-charcoal">Coffee &amp; Conversations</h4><p class="text-xs text-charcoal/60 font-serif italic mt-0.5">Where Our Story Began</p></div></div>
-<!-- Photo Card 4: Aesthetic Placeholder -->
-<div class="group relative rounded-2xl overflow-hidden border border-champagne/40 bg-ivory-100 shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.02] flex flex-col"><div class="relative h-64 w-full overflow-hidden bg-ivory-200"><img alt="Traditional Melody" class="w-full h-full object-cover object-center transform transition duration-500 group-hover:scale-105" decoding="async" loading="eager" style="image-rendering: -webkit-optimize-contrast; image-rendering: high-quality;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvuu1cZppFtwbvoe8cXh9Fs3RCJOk_WX7bljNA2uHTPoAzeyUiBWJ48UXEDbgHjBz5SSoRDLWXHGES5IbzJxzHd-KQqdM-OJMy-HvDKjxAERS1z5A1QFM1T7lIdhcMWOn9tArT0RAnsmM8z79BaHiuAJWTPGSJvDN6G7ZmvrLtVJ4VIhxb2bd2X9mV2NqwA6MXxGWf9PbtDq0Zb0IelTkZS4z6c2X78NPEkXu4_ZqjIINnypGJUgdtyVlftrL5oLkKBQ"><div class="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent transition-opacity"></div></div><div class="p-4 bg-white/90 border-t border-champagne/30"><h4 class="font-serif text-base font-bold text-charcoal">Traditional Melody</h4><p class="text-xs text-charcoal/60 font-serif italic mt-0.5">Moments Frozen in Love</p></div></div>
-</div>
-</section>
-<!-- END: PreWeddingMomentsGallery -->
-<!-- BEGIN: LiveCountdownSection -->
-<section class="mt-14 pt-10 border-t border-champagne/30 text-center" data-purpose="countdown-section">
-<p class="font-serif text-sm uppercase tracking-widest text-bougainvillea-deep font-semibold mb-6">
+              </div>
+            </article>
+          </div>
+        </div>
+        <!-- END: SplitContentGrid -->
+
+        <!-- BEGIN: PreWeddingMomentsGallery -->
+        <section id="gallery" class="mt-14 pt-10 border-t border-champagne/30 reveal-section scroll-mt-10" data-purpose="pre-wedding-gallery">
+          <div class="text-center max-w-2xl mx-auto mb-8">
+            <p class="font-serif text-xs uppercase tracking-widest text-bougainvillea-deep font-semibold mb-1">Captured Moments</p>
+            <h3 class="font-serif text-3xl sm:text-4xl font-normal text-charcoal tracking-wide mb-2">Glimpses of Us</h3>
+            <p class="font-script text-2xl text-bougainvillea">Cherished memories on the way to our forever</p>
+            <div class="flex items-center justify-center mt-3">
+              <span class="inline-block w-6 h-px bg-champagne"></span>
+              <i class="fa-solid fa-heart text-[9px] mx-2 text-bougainvillea/60"></i>
+              <span class="inline-block w-6 h-px bg-champagne"></span>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <!-- Photo Card 1 -->
+            <div class="group relative rounded-2xl overflow-hidden border border-champagne/40 bg-ivory-100 shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.02] flex flex-col">
+              <div class="relative h-64 w-full overflow-hidden bg-ivory-200">
+                <img alt="Sunset Serenade" class="w-full h-full object-cover object-center transform transition duration-500 group-hover:scale-105" decoding="async" loading="eager" style="image-rendering: -webkit-optimize-contrast;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAemU99QLiL1bJimWSTwuJr9yTw2RpvqMGh7LAO00VeURov9g9zMNfONCnm2Av-VliRwhvIMkF3PRFvdj1NpdehZNmLYWdSDzO0x7ZGWtxyUS0mjTd_lv9VNXjXEwvGiKEfjebRwq50YmPv4yiC4fUAFpZ-Jr8gK9J6yQ6cpoTTsuUi0Aeme_KqIQYaX9eoo7YTj_f22OFwxFmFMr1C3NfXOSFFmh5tnkUpJ31rgtk8S8jKGr0NAFrHEcbssR4eX7_Rlg">
+                <div class="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent"></div>
+              </div>
+              <div class="p-4 bg-white/90 border-t border-champagne/30">
+                <h4 class="font-serif text-base font-bold text-charcoal">Sunset Serenade</h4>
+                <p class="text-xs text-charcoal/60 font-serif italic mt-0.5">Golden hour by the shore</p>
+              </div>
+            </div>
+            <!-- Photo Card 2 -->
+            <div class="group relative rounded-2xl overflow-hidden border border-champagne/40 bg-ivory-100 shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.02] flex flex-col">
+              <div class="relative h-64 w-full overflow-hidden bg-ivory-200">
+                <img alt="The First Stroll" class="w-full h-full object-cover object-center transform transition duration-500 group-hover:scale-105" decoding="async" loading="eager" style="image-rendering: -webkit-optimize-contrast;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEjyVHXMKydiwTqWkIWxkNMsZivQh4KxVbsyWdKKK6XasJaBsIB-r7BAvlHpWDgs1Xe_SaGLCpgVPve6Hhxkj-Vv_HPoNhORW4YQwvuMH1VtuM7M7ibKNjYjQVSFjpHy2We1m9J3lbd_qGbATdDPzIUbOI4Ot5JFLxUiiuINdnpv6TnbnL3zEwrNJim6cC-HRp8jk_Ryq9gdUFuEYequOMdhozW0GjSN9e-N43xZbSLNbPaXe9C-mSNh8s9_NbuqtcsQ">
+                <div class="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent"></div>
+              </div>
+              <div class="p-4 bg-white/90 border-t border-champagne/30">
+                <h4 class="font-serif text-base font-bold text-charcoal">The First Stroll</h4>
+                <p class="text-xs text-charcoal/60 font-serif italic mt-0.5">Laughs &amp; Sweet Promises</p>
+              </div>
+            </div>
+            <!-- Photo Card 3 -->
+            <div class="group relative rounded-2xl overflow-hidden border border-champagne/40 bg-ivory-100 shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.02] flex flex-col">
+              <div class="relative h-64 w-full overflow-hidden bg-ivory-200">
+                <img alt="Coffee &amp; Conversations" class="w-full h-full object-cover object-center transform transition duration-500 group-hover:scale-105" decoding="async" loading="eager" style="image-rendering: -webkit-optimize-contrast;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM1H-wiyeG-HQTBoaLRAIMd4Rl6h3u6yVGY8lyGeqlTbGQWeRBe1YrPBCkmSntPlF8cKeEXrlUudUIqcVmQkOgFD_okzYqIbJX1j8StTqH8pCVLi_yhXG3CgbSj2vR8vX8_Z4Tw5AWCFxF1Sy6I_y5W7BvUIEI3HBPS8ZTRQLeivZ1vq1HIBE6QpHsamR1vhvWq9tYW4AsBv0EtGa6caBjgaecbyO3s3WQMThuGIT3ZIVXbs0Dauwd90DF1FADWZyv0A">
+                <div class="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent"></div>
+              </div>
+              <div class="p-4 bg-white/90 border-t border-champagne/30">
+                <h4 class="font-serif text-base font-bold text-charcoal">Coffee &amp; Conversations</h4>
+                <p class="text-xs text-charcoal/60 font-serif italic mt-0.5">Where Our Story Began</p>
+              </div>
+            </div>
+            <!-- Photo Card 4 -->
+            <div class="group relative rounded-2xl overflow-hidden border border-champagne/40 bg-ivory-100 shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.02] flex flex-col">
+              <div class="relative h-64 w-full overflow-hidden bg-ivory-200">
+                <img alt="Traditional Melody" class="w-full h-full object-cover object-center transform transition duration-500 group-hover:scale-105" decoding="async" loading="eager" style="image-rendering: -webkit-optimize-contrast;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvuu1cZppFtwbvoe8cXh9Fs3RCJOk_WX7bljNA2uHTPoAzeyUiBWJ48UXEDbgHjBz5SSoRDLWXHGES5IbzJxzHd-KQqdM-OJMy-HvDKjxAERS1z5A1QFM1T7lIdhcMWOn9tArT0RAnsmM8z79BaHiuAJWTPGSJvDN6G7ZmvrLtVJ4VIhxb2bd2X9mV2NqwA6MXxGWf9PbtDq0Zb0IelTkZS4z6c2X78NPEkXu4_ZqjIINnypGJUgdtyVlftrL5oLkKBQ">
+                <div class="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent"></div>
+              </div>
+              <div class="p-4 bg-white/90 border-t border-champagne/30">
+                <h4 class="font-serif text-base font-bold text-charcoal">Traditional Melody</h4>
+                <p class="text-xs text-charcoal/60 font-serif italic mt-0.5">Moments Frozen in Love</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- END: PreWeddingMomentsGallery -->
+
+        <!-- BEGIN: LiveCountdownSection -->
+        <section id="countdown" class="mt-14 pt-10 border-t border-champagne/30 text-center reveal-section scroll-mt-10" data-purpose="countdown-section">
+          <p class="font-serif text-sm uppercase tracking-widest text-bougainvillea-deep font-semibold mb-6">
             Counting Down To The Auspicious Moment
           </p>
-<div class="flex items-center justify-center gap-3 sm:gap-6" id="countdown-timer">
-<!-- Days -->
-<div class="w-16 sm:w-20 p-3 sm:p-4 rounded-xl bg-ivory-100/90 border border-champagne/50 shadow-sm">
-<span class="block font-serif text-2xl sm:text-3xl font-bold text-charcoal" id="days">20</span>
-<span class="block text-[10px] uppercase tracking-wider text-charcoal/60 mt-1">Days</span>
-</div>
-<span class="text-champagne font-serif text-xl sm:text-2xl">:</span>
-<!-- Hours -->
-<div class="w-16 sm:w-20 p-3 sm:p-4 rounded-xl bg-ivory-100/90 border border-champagne/50 shadow-sm">
-<span class="block font-serif text-2xl sm:text-3xl font-bold text-charcoal" id="hours">12</span>
-<span class="block text-[10px] uppercase tracking-wider text-charcoal/60 mt-1">Hours</span>
-</div>
-<span class="text-champagne font-serif text-xl sm:text-2xl">:</span>
-<!-- Minutes -->
-<div class="w-16 sm:w-20 p-3 sm:p-4 rounded-xl bg-ivory-100/90 border border-champagne/50 shadow-sm">
-<span class="block font-serif text-2xl sm:text-3xl font-bold text-charcoal" id="minutes">19</span>
-<span class="block text-[10px] uppercase tracking-wider text-charcoal/60 mt-1">Mins</span>
-</div>
-<span class="text-champagne font-serif text-xl sm:text-2xl">:</span>
-<!-- Seconds -->
-<div class="w-16 sm:w-20 p-3 sm:p-4 rounded-xl bg-ivory-100/90 border border-champagne/50 shadow-sm">
-<span class="block font-serif text-2xl sm:text-3xl font-bold text-bougainvillea" id="seconds">56</span>
-<span class="block text-[10px] uppercase tracking-wider text-charcoal/60 mt-1">Secs</span>
-</div>
-</div>
-</section>
-<!-- END: LiveCountdownSection -->
-<!-- BEGIN: InteractiveRSVPAndBlessings -->
-<section class="mt-14 gap-8 pt-8 border-t border-champagne/30 flex justify-center" data-purpose="rsvp-and-blessings">
-<!-- Blessings & Wishes Box -->
-<div class="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-ivory-100 to-white border border-champagne/50 flex flex-col justify-between max-w-md w-full shadow-sm">
-<div>
-<div class="flex items-center justify-between mb-3">
-<div class="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-marigold">
-<i class="fa-solid fa-heart-pulse text-base"></i>
-</div>
-<span class="text-[11px] font-semibold tracking-wider text-bougainvillea uppercase bg-bougainvillea-soft px-3 py-1 rounded-full" id="wishes-count-badge">0 Wishes</span>
-</div>
-<h3 class="font-serif text-xl font-bold text-charcoal mb-1">Blessings &amp; Wishes</h3>
-<p class="text-xs text-charcoal/70 mb-5">Share your blessings or view warm wishes sent by family &amp; friends for Gowthami &amp; Arjun.</p>
-</div>
-<div class="flex flex-col sm:flex-row items-center gap-3">
-<button class="w-full py-3 rounded-xl bg-bougainvillea hover:bg-bougainvillea-deep text-white text-xs font-semibold uppercase tracking-widest transition-all shadow-sm flex items-center justify-center" onclick="toggleWishModal(true)">
-<i class="fa-solid fa-pen-fancy mr-2"></i> Send Blessing
-</button>
-<button class="w-full py-3 rounded-xl border border-charcoal/20 bg-white hover:bg-ivory-100 text-charcoal text-xs font-semibold uppercase tracking-widest transition-all flex items-center justify-center" onclick="toggleViewWishesModal(true)">
-<i class="fa-solid fa-heart text-bougainvillea mr-2"></i> View Wishes
-</button>
-</div>
-</div>
-</section>
-<!-- END: InteractiveRSVPAndBlessings -->
-<!-- BEGIN: FooterNote -->
-<footer class="mt-12 text-center" data-purpose="invitation-footer">
-<p class="font-script text-3xl text-bougainvillea mb-1">With Warm Regards &amp; Love</p>
-<p class="font-serif text-sm tracking-widest text-charcoal/60 uppercase">Family &amp; Friends of Gowthami and Arjun</p>
-</footer>
-<!-- END: FooterNote -->
-</div>
-</div>
-</main>
-<!-- END: InvitationMainContainer -->
-<!-- BEGIN: RSVPModal -->
-<!-- END: RSVPModal -->
-<!-- BEGIN: WishModal -->
-<div class="fixed inset-0 z-50 flex items-center justify-center bg-charcoal/60 backdrop-blur-sm p-4 hidden" data-purpose="wish-modal" id="wish-modal">
-<div class="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 border border-champagne relative shadow-2xl">
-<button class="absolute top-4 right-4 text-charcoal/40 hover:text-charcoal text-lg" onclick="toggleWishModal(false)">
-<i class="fa-solid fa-xmark"></i>
-</button>
-<h3 class="font-serif text-2xl font-bold text-charcoal text-center mb-1">Bless The Couple</h3>
-<p class="text-xs text-charcoal/60 text-center mb-6">Send your love to Gowthami &amp; Arjun</p>
-<form class="space-y-4" id="wish-form" onsubmit="handleWishSubmit(event)">
-<div>
-<label class="block text-xs font-semibold uppercase tracking-wider text-charcoal/80 mb-1">Your Name</label>
-<input class="w-full text-sm rounded-lg border-gray-300 focus:border-bougainvillea focus:ring-bougainvillea" placeholder="Your name" required="" type="text">
-</div>
-<div>
-<label class="block text-xs font-semibold uppercase tracking-wider text-charcoal/80 mb-1">Blessing Message</label>
-<textarea class="w-full text-sm rounded-lg border-gray-300 focus:border-bougainvillea focus:ring-bougainvillea" placeholder="Wishing you a lifetime of laughter, joy, and eternal togetherness..." required="" rows="4"></textarea>
-</div>
-<button class="w-full py-3 rounded-lg bg-marigold hover:bg-amber-600 text-white text-xs font-semibold uppercase tracking-widest shadow transition-colors" type="submit">
+          <div class="flex items-center justify-center gap-2 sm:gap-6" id="countdown-timer">
+            <div class="w-16 sm:w-20 p-3 sm:p-4 rounded-xl bg-ivory-100/90 border border-champagne/50 shadow-sm">
+              <span class="block font-serif text-2xl sm:text-3xl font-bold text-charcoal" id="days">20</span>
+              <span class="block text-[10px] uppercase tracking-wider text-charcoal/60 mt-1">Days</span>
+            </div>
+            <span class="text-champagne font-serif text-xl sm:text-2xl">:</span>
+            <div class="w-16 sm:w-20 p-3 sm:p-4 rounded-xl bg-ivory-100/90 border border-champagne/50 shadow-sm">
+              <span class="block font-serif text-2xl sm:text-3xl font-bold text-charcoal" id="hours">12</span>
+              <span class="block text-[10px] uppercase tracking-wider text-charcoal/60 mt-1">Hours</span>
+            </div>
+            <span class="text-champagne font-serif text-xl sm:text-2xl">:</span>
+            <div class="w-16 sm:w-20 p-3 sm:p-4 rounded-xl bg-ivory-100/90 border border-champagne/50 shadow-sm">
+              <span class="block font-serif text-2xl sm:text-3xl font-bold text-charcoal" id="minutes">19</span>
+              <span class="block text-[10px] uppercase tracking-wider text-charcoal/60 mt-1">Mins</span>
+            </div>
+            <span class="text-champagne font-serif text-xl sm:text-2xl">:</span>
+            <div class="w-16 sm:w-20 p-3 sm:p-4 rounded-xl bg-ivory-100/90 border border-champagne/50 shadow-sm">
+              <span class="block font-serif text-2xl sm:text-3xl font-bold text-bougainvillea" id="seconds">56</span>
+              <span class="block text-[10px] uppercase tracking-wider text-charcoal/60 mt-1">Secs</span>
+            </div>
+          </div>
+        </section>
+        <!-- END: LiveCountdownSection -->
+
+        <!-- BEGIN: InteractiveRSVPAndBlessings -->
+        <section id="blessings" class="mt-14 gap-8 pt-8 border-t border-champagne/30 flex justify-center reveal-section scroll-mt-10" data-purpose="rsvp-and-blessings">
+          <div class="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-ivory-100 to-white border border-champagne/50 flex flex-col justify-between max-w-md w-full shadow-sm">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-marigold">
+                  <i class="fa-solid fa-heart-pulse text-base"></i>
+                </div>
+                <span class="text-[11px] font-semibold tracking-wider text-bougainvillea uppercase bg-bougainvillea-soft px-3 py-1 rounded-full" id="wishes-count-badge">0 Wishes</span>
+              </div>
+              <h3 class="font-serif text-xl font-bold text-charcoal mb-1">Blessings &amp; Wishes</h3>
+              <p class="text-xs text-charcoal/70 mb-5">Share your blessings or view warm wishes sent by family &amp; friends for Gowthami &amp; Arjun.</p>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center gap-3">
+              <button class="w-full min-h-[44px] py-3 rounded-xl bg-bougainvillea hover:bg-bougainvillea-deep text-white text-xs font-semibold uppercase tracking-widest transition-all shadow-sm flex items-center justify-center" onclick="toggleWishModal(true)">
+                <i class="fa-solid fa-pen-fancy mr-2"></i> Send Blessing
+              </button>
+              <button class="w-full min-h-[44px] py-3 rounded-xl border border-charcoal/20 bg-white hover:bg-ivory-100 text-charcoal text-xs font-semibold uppercase tracking-widest transition-all flex items-center justify-center" onclick="toggleViewWishesModal(true)">
+                <i class="fa-solid fa-heart text-bougainvillea mr-2"></i> View Wishes
+              </button>
+            </div>
+          </div>
+        </section>
+        <!-- END: InteractiveRSVPAndBlessings -->
+
+        <!-- BEGIN: FooterNote -->
+        <footer class="mt-12 text-center reveal-section" data-purpose="invitation-footer">
+          <p class="font-script text-3xl text-bougainvillea mb-1">With Warm Regards &amp; Love</p>
+          <p class="font-serif text-sm tracking-widest text-charcoal/60 uppercase mb-4">Family &amp; Friends of Gowthami and Arjun</p>
+          <!-- Visitor Counter Badge -->
+          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-ivory-100/90 border border-champagne/40 text-[11px] text-charcoal/70 shadow-sm" id="visitor-counter-badge">
+            <i class="fa-solid fa-eye text-bougainvillea text-xs"></i>
+            <span class="font-medium" id="visitor-count-text">1 Guest Visited</span>
+          </div>
+        </footer>
+        <!-- END: FooterNote -->
+      </div>
+    </div>
+  </main>
+  <!-- END: InvitationMainContainer -->
+
+  <!-- BEGIN: WishModal -->
+  <div class="fixed inset-0 z-50 flex items-center justify-center bg-charcoal/60 backdrop-blur-sm p-4 hidden" data-purpose="wish-modal" id="wish-modal">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 border border-champagne relative shadow-2xl">
+      <button class="absolute top-4 right-4 text-charcoal/40 hover:text-charcoal text-lg" onclick="toggleWishModal(false)">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <h3 class="font-serif text-2xl font-bold text-charcoal text-center mb-1">Bless The Couple</h3>
+      <p class="text-xs text-charcoal/60 text-center mb-6">Send your love to Gowthami &amp; Arjun</p>
+      <form class="space-y-4" id="wish-form" onsubmit="handleWishSubmit(event)">
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-charcoal/80 mb-1">Your Name</label>
+          <input class="w-full text-sm rounded-lg border-gray-300 focus:border-bougainvillea focus:ring-bougainvillea" placeholder="Your name" required="" type="text">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-charcoal/80 mb-1">Blessing Message</label>
+          <textarea class="w-full text-sm rounded-lg border-gray-300 focus:border-bougainvillea focus:ring-bougainvillea" placeholder="Wishing you a lifetime of laughter, joy, and eternal togetherness..." required="" rows="4"></textarea>
+        </div>
+        <button class="w-full py-3 rounded-lg bg-marigold hover:bg-amber-600 text-white text-xs font-semibold uppercase tracking-widest shadow transition-colors" type="submit">
           Send Blessing
         </button>
-</form>
-</div>
-</div>
-<!-- END: WishModal -->
-<!-- BEGIN: ViewWishesModal -->
-<div class="fixed inset-0 z-50 flex items-center justify-center bg-charcoal/60 backdrop-blur-sm p-4 hidden" data-purpose="view-wishes-modal" id="view-wishes-modal">
-<div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 border border-champagne relative shadow-2xl flex flex-col max-h-[90vh]">
-<button class="absolute top-4 right-4 text-charcoal/40 hover:text-charcoal text-lg z-10" onclick="toggleViewWishesModal(false)">
-<i class="fa-solid fa-xmark"></i>
-</button>
-<div class="text-center mb-4 pb-3 border-b border-champagne/30">
-<i class="fa-solid fa-hands-praying text-2xl text-marigold mb-1"></i>
-<h3 class="font-serif text-2xl font-bold text-charcoal mb-0.5">Blessings &amp; Wishes</h3>
-<p class="text-xs text-charcoal/60 font-serif italic">Heartfelt love showered upon Gowthami &amp; Arjun</p>
-</div>
-<!-- Scrollable wishes container -->
-<div class="overflow-y-auto space-y-3.5 pr-1 my-2 flex-1 max-h-[60vh]" id="wishes-container">
-<!-- Wishes dynamically rendered here -->
-</div>
-<div class="pt-4 border-t border-champagne/30 flex items-center justify-between">
-<p class="text-[11px] text-charcoal/60 italic font-serif">May their journey be filled with happiness!</p>
-<button class="px-4 py-2 rounded-lg bg-bougainvillea hover:bg-bougainvillea-deep text-white text-xs font-semibold uppercase tracking-wider transition-colors inline-flex items-center" onclick="toggleViewWishesModal(false); toggleWishModal(true);">
-<i class="fa-solid fa-plus mr-1.5 text-[10px]"></i> Add Yours
-</button>
-</div>
-</div>
-</div>
-<!-- END: ViewWishesModal -->
-<!-- BEGIN: JavaScriptInteractions -->
-<!-- Countdown Timer Logic -->
-<script data-purpose="countdown-logic">
-    (function initCountdown() {
-      // Muhurtham Date: Oct 14, 2026, 09:00:00 AM IST
-      const targetDate = new Date("2026-10-14T09:00:00+05:30").getTime();
+      </form>
+    </div>
+  </div>
+  <!-- END: WishModal -->
 
+  <!-- BEGIN: ViewWishesModal -->
+  <div class="fixed inset-0 z-50 flex items-center justify-center bg-charcoal/60 backdrop-blur-sm p-4 hidden" data-purpose="view-wishes-modal" id="view-wishes-modal">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 border border-champagne relative shadow-2xl flex flex-col max-h-[90vh]">
+      <button class="absolute top-4 right-4 text-charcoal/40 hover:text-charcoal text-lg z-10" onclick="toggleViewWishesModal(false)">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="text-center mb-4 pb-3 border-b border-champagne/30">
+        <i class="fa-solid fa-hands-praying text-2xl text-marigold mb-1"></i>
+        <h3 class="font-serif text-2xl font-bold text-charcoal mb-0.5">Blessings &amp; Wishes</h3>
+        <p class="text-xs text-charcoal/60 font-serif italic">Heartfelt love showered upon Gowthami &amp; Arjun</p>
+      </div>
+      <div class="overflow-y-auto space-y-3.5 pr-1 my-2 flex-1 max-h-[60vh]" id="wishes-container"></div>
+      <div class="pt-4 border-t border-champagne/30 flex items-center justify-between">
+        <p class="text-[11px] text-charcoal/60 italic font-serif">May their journey be filled with happiness!</p>
+        <button class="px-4 py-2 rounded-lg bg-bougainvillea hover:bg-bougainvillea-deep text-white text-xs font-semibold uppercase tracking-wider transition-colors inline-flex items-center" onclick="toggleViewWishesModal(false); toggleWishModal(true);">
+          <i class="fa-solid fa-plus mr-1.5 text-[10px]"></i> Add Yours
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- END: ViewWishesModal -->
+
+  <!-- BEGIN: JavaScriptInteractions -->
+  <script data-purpose="countdown-logic">
+    (function initCountdown() {
+      const targetDate = new Date("2026-10-14T09:00:00+05:30").getTime();
       const daysEl = document.getElementById("days");
       const hoursEl = document.getElementById("hours");
       const minutesEl = document.getElementById("minutes");
@@ -535,25 +561,65 @@
       setInterval(updateTimer, 1000);
     })();
   </script>
-<!-- Modal and Event Handlers -->
-<script data-purpose="modal-handlers">
-    // Wishes store & render logic
-    const defaultWishes = [];
 
-    function getWishes() {
-      const stored = localStorage.getItem('wedding_wishes');
+  <script data-purpose="modal-handlers">
+    // Global Cloud Shared Wishes Store Endpoint (Syncs across all devices & visitors)
+    const CLOUD_WISHES_ENDPOINT = 'https://api.counterapi.dev/v2/gowthami_arjun_wedding_2026/wishes';
+    const ALT_CLOUD_STORE = 'https://gowthami-arjun-wedding-default-rtdb.asia-southeast1.firebasedatabase.app/wishes';
+
+    let localWishesCache = [];
+
+    function getLocalWishes() {
+      const stored = localStorage.getItem('wedding_wishes_global');
       if (stored) {
-        try { return JSON.parse(stored); } catch(e) { return defaultWishes; }
+        try { return JSON.parse(stored); } catch(e) { return []; }
       }
-      return defaultWishes;
+      return [];
     }
 
-    function saveWishes(wishes) {
-      localStorage.setItem('wedding_wishes', JSON.stringify(wishes));
+    function saveLocalWishes(wishes) {
+      localStorage.setItem('wedding_wishes_global', JSON.stringify(wishes));
     }
 
-    function renderWishes() {
-      const wishes = getWishes();
+    async function fetchCloudWishes() {
+      // 1. Try fetching from Cloud Realtime DB
+      try {
+        const res = await fetch(`${ALT_CLOUD_STORE}.json`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data) {
+            const list = Array.isArray(data) ? data : Object.values(data);
+            list.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+            localWishesCache = list;
+            saveLocalWishes(list);
+            renderWishes(list);
+            return list;
+          }
+        }
+      } catch (err) {
+        console.warn('Cloud sync offline fallback:', err);
+      }
+
+      // Fallback to local storage cache if network fails
+      localWishesCache = getLocalWishes();
+      renderWishes(localWishesCache);
+      return localWishesCache;
+    }
+
+    async function postCloudWish(newWish) {
+      try {
+        await fetch(`${ALT_CLOUD_STORE}.json`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newWish)
+        });
+      } catch (err) {
+        console.warn('Cloud post warning:', err);
+      }
+    }
+
+    function renderWishes(wishesList) {
+      const wishes = wishesList || localWishesCache || getLocalWishes();
       const container = document.getElementById('wishes-container');
       const badge = document.getElementById('wishes-count-badge');
       if (badge) badge.innerText = `${wishes.length} Wishes`;
@@ -596,12 +662,12 @@
       }
     }
 
-    function toggleViewWishesModal(show) {
+    async function toggleViewWishesModal(show) {
       const modal = document.getElementById('view-wishes-modal');
       if (modal) {
         if (show) {
-          renderWishes();
           modal.classList.remove('hidden');
+          await fetchCloudWishes();
         } else {
           modal.classList.add('hidden');
         }
@@ -615,7 +681,7 @@
       e.target.reset();
     }
 
-    function handleWishSubmit(e) {
+    async function handleWishSubmit(e) {
       e.preventDefault();
       const form = e.target;
       const nameInput = form.querySelector('input[type="text"]');
@@ -625,24 +691,67 @@
       const message = msgInput ? msgInput.value.trim() : '';
 
       if (name && message) {
-        const wishes = getWishes();
-        wishes.unshift({ name, message, date: 'Just now' });
-        saveWishes(wishes);
-        renderWishes();
+        const newWish = {
+          name,
+          message,
+          date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+          timestamp: Date.now()
+        };
+
+        // Instant local optimistic update for snappy UX
+        localWishesCache.unshift(newWish);
+        saveLocalWishes(localWishesCache);
+        renderWishes(localWishesCache);
+
         toggleWishModal(false);
         form.reset();
         toggleViewWishesModal(true);
+
+        // Sync globally to cloud so all viewers across all devices see it!
+        await postCloudWish(newWish);
+        await fetchCloudWishes();
       }
     }
 
-    // Initial load badge count setup
+    // Scroll Reveal Intersection Observer & Initial Cloud Wishes Fetch
     document.addEventListener('DOMContentLoaded', () => {
-      const wishes = getWishes();
-      const badge = document.getElementById('wishes-count-badge');
-      if (badge) badge.innerText = `${wishes.length} Wishes`;
+      fetchCloudWishes();
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal-section').forEach(sec => observer.observe(sec));
     });
 
+    // Visitor counter tracking logic (CounterAPI + LocalStorage fallback)
+    (function initVisitorCounter() {
+      const visitorText = document.getElementById('visitor-count-text');
+      if (!visitorText) return;
 
+      const NAMESPACE = 'gowthami_arjun_wedding_2026';
+      const KEY = 'page_views';
+
+      let localViews = parseInt(localStorage.getItem('wedding_visit_count') || '0', 10) + 1;
+      localStorage.setItem('wedding_visit_count', localViews.toString());
+
+      fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}/up`)
+        .then(res => res.json())
+        .then(data => {
+          if (data && typeof data.count === 'number') {
+            visitorText.innerText = `${data.count.toLocaleString()} Guests Visited`;
+          } else {
+            visitorText.innerText = `${localViews.toLocaleString()} Guests Visited`;
+          }
+        })
+        .catch(() => {
+          visitorText.innerText = `${localViews.toLocaleString()} Guests Visited`;
+        });
+    })();
 
     // Generate and download a simple .ics calendar file
     function downloadIcs(title, location, isoDateTime) {
@@ -669,7 +778,10 @@
       document.body.removeChild(link);
     }
   </script>
-<!-- END: JavaScriptInteractions -->
+  <!-- END: JavaScriptInteractions -->
 
+  <!-- Vercel Web Analytics Insights -->
+  <script defer src="/_vercel/insights/script.js"></script>
 
-</body></html>
+</body>
+</html>
